@@ -72,10 +72,10 @@ namespace ODataAspNetCoreCosmos.Controllers
         [HttpGet]
         public IActionResult GetEntity(ODataQueryOptions<WeatherForecast> options)
         {
-            // http://localhost:7292/weatherforecast/dto/?$filter=summary eq 'Cool' works
+            // http://localhost:7292/weatherforecast/?$filter=summary eq 'Cool' works
             // the generated query to cosmos db is (PartitionKey eq 'WeatherForecast') and (Summary eq 'Cool')
             // /ODataWeatherSample?$filter=%28PartitionKey%20eq%20%27WeatherForecast%27%29%20and%20%28Summary%20eq%20%27Cool%27%29
-            // http://localhost:7292/weatherforecast/dto/?$filter=Name eq 'BBC' fails
+            // http://localhost:7292/weatherforecast/?$filter=Name eq 'BBC' fails
             // the generated query to cosmos db is (PartitionKey eq 'WeatherForecast') and (() eq 'BBC')
             // /ODataWeatherSample?$filter=%28PartitionKey%20eq%20%27WeatherForecast%27%29%20and%20%28%28%29%20eq%20%27BBC%27%29
             var tableReference = this._dbConnector.GetWeatherTable();
